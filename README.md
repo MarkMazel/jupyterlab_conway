@@ -1,6 +1,8 @@
-# jupyterlab_xkcd
+# jupyterlab_conway
 
-Following jupyterlab xkcd tutorial
+Conway's Game of Life for JupyterLab
+
+Made by following jupyterlab xkcd tutorial
 
 
 ## Prerequisites
@@ -10,7 +12,7 @@ Following jupyterlab xkcd tutorial
 ## Installation
 
 ```bash
-jupyter labextension install jupyterlab_xkcd
+jupyter labextension install jupyterlab_conway
 ```
 
 ## Development
