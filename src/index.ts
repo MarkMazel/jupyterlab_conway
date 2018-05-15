@@ -161,7 +161,7 @@ class ConwayWidget extends Widget {
     super();
 
     this.id = 'test-jupyterlab';
-    this.title.label = 'test widget v1';
+    this.title.label = 'Conway Game';
     this.title.closable = true;
     this.addClass('jp-conwayWidget');
 
