@@ -1,0 +1,15 @@
+.jp-conwayWidget {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.jp-testCanvas {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.jp-testCanvas {
+    margin: auto;
+}
