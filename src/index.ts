@@ -28,6 +28,18 @@ var width: number = 50;
  * Amount of squares in board height.
  */
 var height: number = 50;
+/**
+ * Timer for running.
+ */
+var runTimer: number;
+/**
+ * Running rate (used with timer).
+ */
+var rate: number = 250;
+/**
+ * Boolean of whether we are in "run" mode.
+ */
+var isRun: boolean = false;
 
 /**
  * Reset state bitmatrix.
@@ -131,6 +143,14 @@ function takeStep(inCtx: CanvasRenderingContext2D, inArr: boolean[][]){
 };
 
 /**
+ * Take step from current board state to next board state during run.
+ */
+function runStep(inCtx: CanvasRenderingContext2D, inArr: boolean[][]){
+  redraw(inCtx);
+  takeStep(inCtx, inArr);
+};
+
+/**
  * A Conway's Game of Life Widget.
  */
 class ConwayWidget extends Widget {
@@ -222,6 +242,21 @@ class ConwayWidget extends Widget {
     };
     this.cntrlDiv.appendChild(this.step);
 
+    this.run = document.createElement('button');
+    this.run.id = 'run';
+    this.run.className = 'jp-testButton';
+    this.run.innerHTML = 'run';
+    this.run.style.width = "100%";
+    this.run.onclick = () => {
+      isRun = !isRun;
+      if(isRun) {
+        runTimer = setInterval(() => runStep(this.ctx, this.state), rate);
+      } else {
+        clearTimeout(runTimer);
+      }
+    };
+    this.cntrlDiv.appendChild(this.run);
+
     this.node.appendChild(this.cntrlDiv);
   }
 
@@ -241,6 +276,10 @@ class ConwayWidget extends Widget {
    * The generate button associated with the widget.
    */
   gen: HTMLButtonElement;
+  /**
+   * The run button associated with the widget.
+   */
+  run: HTMLButtonElement;
   /**
    * The step button associated with the widget.
    */
