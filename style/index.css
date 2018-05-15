@@ -6,8 +6,8 @@
 
 .jp-testCanvas {
     display: flex;
-    overflow-x: scroll;
-    overflow-y: scroll;
+    overflow-x: none;
+    overflow-y: none;
 }
 
 .jp-testCanvas {

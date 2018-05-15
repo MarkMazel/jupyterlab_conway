@@ -150,17 +150,12 @@ class ConwayWidget extends Widget {
     this.cnvs.className = 'jp-testCanvas';
     this.cnvs.height = height*10;
     this.cnvs.width = width*10;
-    /*
-    this.cnvs.onclick = (event: MouseEvent) => {
-      var rect = this.cnvs.getBoundingClientRect();
-      //alert(Math.floor((event.clientX-rect.left)/10) + ' ' + Math.floor((event.clientY-rect.top)/10));
-      this.state[Math.floor((event.clientX-rect.left)/10)][Math.floor((event.clientY-rect.top)/10)] = !this.state[Math.floor((event.clientX-rect.left)/10)][Math.floor((event.clientY-rect.top)/10)];
-      this.state[event.offsetX][event.offsetY] = !this.state[event.offsetX][event.offsetY];
+    this.cnvs.onclick = (event: MouseEvent) => {``
+      this.state[Math.floor(event.offsetX/10)][Math.floor(event.offsetY/10)] = !this.state[Math.floor(event.offsetX/10)][Math.floor(event.offsetY/10)];
       
       redraw(this.ctx);
       drawState(this.ctx, this.state);
     };
-    */
     this.node.appendChild(this.cnvs);
 
     this.cntrlDiv = document.createElement('div');
@@ -169,7 +164,7 @@ class ConwayWidget extends Widget {
 
     this.txt = document.createElement('textarea');
     this.txt.id = 'txt';
-    this.txt.rows = 10;
+    this.txt.rows = 7;
     this.txt.style.width = "50%";
     this.txt.className = 'jp-testInput';
     this.cntrlDiv.appendChild(this.txt);
@@ -205,7 +200,6 @@ class ConwayWidget extends Widget {
         if(isGood) {
           this.state[Number(curr[0])][Number(curr[1])] = true;
         }
-        //alert(curr[0] + ' ' + curr[1]);
       }
       if(isGood) {
         this.txt.style.color = "black";
