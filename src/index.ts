@@ -150,12 +150,17 @@ class ConwayWidget extends Widget {
     this.cnvs.className = 'jp-testCanvas';
     this.cnvs.height = height*10;
     this.cnvs.width = width*10;
+    /*
     this.cnvs.onclick = (event: MouseEvent) => {
-      alert(Math.round((event.clientX)/10) + ' ' + Math.round((event.clientY)/10));
-      this.state[Math.round((event.clientX-this.cnvs.offsetLeft)/100)][Math.round((event.clientY-this.cnvs.offsetTop)/100)] = !this.state[Math.round((event.clientX-this.cnvs.offsetLeft)/100)][Math.round((event.clientY-this.cnvs.offsetTop)/100)];
+      var rect = this.cnvs.getBoundingClientRect();
+      //alert(Math.floor((event.clientX-rect.left)/10) + ' ' + Math.floor((event.clientY-rect.top)/10));
+      this.state[Math.floor((event.clientX-rect.left)/10)][Math.floor((event.clientY-rect.top)/10)] = !this.state[Math.floor((event.clientX-rect.left)/10)][Math.floor((event.clientY-rect.top)/10)];
+      this.state[event.offsetX][event.offsetY] = !this.state[event.offsetX][event.offsetY];
+      
       redraw(this.ctx);
       drawState(this.ctx, this.state);
     };
+    */
     this.node.appendChild(this.cnvs);
 
     this.cntrlDiv = document.createElement('div');
