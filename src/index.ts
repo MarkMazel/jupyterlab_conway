@@ -23,11 +23,11 @@ import '../style/index.css';
 /**
  * Amount of squares in board width.
  */
-var width: number = 128;
+var width: number = 50;
 /**
  * Amount of squares in board height.
  */
-var height: number = 72;
+var height: number = 50;
 
 /**
  * Reset state bitmatrix.
@@ -48,11 +48,11 @@ function redraw(inCtx: CanvasRenderingContext2D){
   inCtx.fillStyle = "white";
   inCtx.fillRect(0, 0, width*10, height*10);
   inCtx.beginPath();
-  for(var i = 0; i < width*10; i=i+10){
+  for(var i = 0; i <= width*10; i=i+10){
     inCtx.moveTo(i,0);
     inCtx.lineTo(i,height*10);
   }
-  for(var j = 0; j < height*10; j=j+10){
+  for(var j = 0; j <= height*10; j=j+10){
     inCtx.moveTo(0,j);
     inCtx.lineTo(width*10,j);
   }
@@ -148,8 +148,14 @@ class ConwayWidget extends Widget {
     this.cnvs = document.createElement('canvas');
     this.cnvs.id = 'cnvs';
     this.cnvs.className = 'jp-testCanvas';
-    this.cnvs.height = 500;
-    this.cnvs.width = 500;
+    this.cnvs.height = height*10;
+    this.cnvs.width = width*10;
+    this.cnvs.onclick = (event: MouseEvent) => {
+      alert(Math.round((event.clientX)/10) + ' ' + Math.round((event.clientY)/10));
+      this.state[Math.round((event.clientX-this.cnvs.offsetLeft)/100)][Math.round((event.clientY-this.cnvs.offsetTop)/100)] = !this.state[Math.round((event.clientX-this.cnvs.offsetLeft)/100)][Math.round((event.clientY-this.cnvs.offsetTop)/100)];
+      redraw(this.ctx);
+      drawState(this.ctx, this.state);
+    };
     this.node.appendChild(this.cnvs);
 
     this.cntrlDiv = document.createElement('div');
