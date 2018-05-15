@@ -164,7 +164,7 @@ class ConwayWidget extends Widget {
 
     this.txt = document.createElement('textarea');
     this.txt.id = 'txt';
-    this.txt.rows = 7;
+    this.txt.rows = 5;
     this.txt.style.width = "50%";
     this.txt.className = 'jp-testInput';
     this.cntrlDiv.appendChild(this.txt);
